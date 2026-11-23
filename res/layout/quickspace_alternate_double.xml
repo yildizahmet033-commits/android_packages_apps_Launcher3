@@ -137,8 +137,7 @@
             app:keyShadowColor="?attr/workspaceKeyShadowColor"
             app:keyShadowOffsetX="0.5dp"
             style="@style/QuickSpaceText"
-            android:focusable="true"
-            android:focusableInTouchMode="true" />
+            android:focusable="true" />
 
     </LinearLayout>
 

@@ -101,6 +101,11 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
 
     private final void loadDoubleLine(boolean useAlternativeQuickspaceUI) {
         mEventTitle.setText(mController.getEventController().getTitle());
+        // Keep the date tappable even when there is no quick event to show
+        mEventTitle.setOnClickListener(mController.getEventController().getAction());
+        if (mDateText != null) {
+            mDateText.setOnClickListener(mController.getEventController().getAction());
+        }
         if (useAlternativeQuickspaceUI) {
             String greetingsExt = mController.getEventController().getGreetings();
             if (greetingsExt != null && !greetingsExt.isEmpty()) {
@@ -123,7 +128,6 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
         if (mIsQuickEvent && (LauncherPrefs.SHOW_QUICKSPACE_PSONALITY.get(getContext()) ||
                         mController.getEventController().isNowPlaying())) {
             maybeSetMarquee(mEventTitle);
-            mEventTitle.setOnClickListener(mController.getEventController().getAction());
             mEventTitleSub.setVisibility(View.VISIBLE);
             mEventTitleSub.setText(mController.getEventController().getActionTitle());
             maybeSetMarquee(mEventTitleSub);
@@ -613,6 +617,9 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
         }
         if (mEventTitle != null) {
             mEventTitle.setOnClickListener(null);
+        }
+        if (mDateText != null) {
+            mDateText.setOnClickListener(null);
         }
         if (mEventTitleSub != null) {
             mEventTitleSub.setOnClickListener(null);

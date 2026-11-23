@@ -94,7 +94,6 @@
         android:textSize="16sp"
         android:textColor="?attr/workspaceTextColor"
         android:focusable="true"
-        android:focusableInTouchMode="true"
         android:scrollHorizontally="true"
         android:singleLine="true"
         app:ambientShadowBlur="3dp"
