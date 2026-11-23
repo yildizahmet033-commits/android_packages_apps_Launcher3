@@ -63,7 +63,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.util.ToBooleanFunction;
-import com.android.internal.util.infinity.Utils;
+import com.android.internal.util.evolution.Utils;
 import com.android.launcher3.ActivityInteractor;
 import com.android.launcher3.AsyncAnimatorPlaybackController;
 import com.android.launcher3.DeviceProfile;
@@ -167,19 +167,19 @@ public class TaskbarManagerImpl {
             LineageSettings.System.NAVIGATION_BAR_HINT);
 
     public static final Uri NAVBAR_LAYOUT_MODE_URI = Settings.Secure.getUriFor(
-            Settings.Secure.NAVBAR_LAYOUT_MODE);
+            "navbar_layout_mode" /* Infinity X key, not in Evolution X */);
 
     public static final Uri FORCE_SHOW_NAVBAR_URI = LineageSettings.System.getUriFor(
             LineageSettings.System.FORCE_SHOW_NAVBAR);
 
     public static final Uri GESTURE_NAVBAR_LENGTH_MODE_URI = Settings.System.getUriFor(
-            Settings.System.GESTURE_NAVBAR_LENGTH_MODE);
+            "gesture_navbar_length_mode" /* Infinity X key */);
 
     public static final Uri GESTURE_NAVBAR_HEIGHT_MODE_URI = Settings.System.getUriFor(
-            Settings.System.GESTURE_NAVBAR_HEIGHT_MODE);
+            "gesture_navbar_height_mode" /* Infinity X key */);
 
     public static final Uri NAVBAR_IME_SPACE_URI = Settings.Secure.getUriFor(
-            Settings.Secure.NAVBAR_IME_SPACE);
+            "navbar_ime_space" /* Infinity X key */);
 
     private final Context mBaseContext;
     private final int mPrimaryDisplayId;

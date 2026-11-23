@@ -32,7 +32,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View.OnClickListener;
 
-import com.android.internal.util.infinity.OmniJawsClient;
+import com.android.internal.util.android.OmniJawsClient;
 
 import com.android.launcher3.LauncherPrefs;
 import com.android.launcher3.R;

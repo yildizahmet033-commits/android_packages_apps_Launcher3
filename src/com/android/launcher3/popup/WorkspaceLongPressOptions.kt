@@ -21,7 +21,7 @@ import android.content.Intent
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
-import com.android.internal.util.infinity.Utils
+import com.android.internal.util.evolution.Utils
 import com.android.launcher3.BuildConfig
 import com.android.launcher3.Flags
 import com.android.launcher3.Launcher
