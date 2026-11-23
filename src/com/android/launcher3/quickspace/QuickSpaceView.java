@@ -275,6 +275,12 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
             mDateText = (TextView) findViewById(R.id.date_text);
         }
         
+        // Open the clock app when either clock layer is tapped
+        if (mActionReceiver != null) {
+            if (mClock1 != null) mClock1.setOnClickListener(mActionReceiver.getClockAction());
+            if (mClock2 != null) mClock2.setOnClickListener(mActionReceiver.getClockAction());
+        }
+
         // Apply clock visibility and color settings
         updateClockVisibilityAndColor();
     }
@@ -599,6 +605,12 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
      * Clear all click listeners to prevent memory leaks from retained callbacks
      */
     private void clearClickListeners() {
+        if (mClock1 != null) {
+            mClock1.setOnClickListener(null);
+        }
+        if (mClock2 != null) {
+            mClock2.setOnClickListener(null);
+        }
         if (mEventTitle != null) {
             mEventTitle.setOnClickListener(null);
         }

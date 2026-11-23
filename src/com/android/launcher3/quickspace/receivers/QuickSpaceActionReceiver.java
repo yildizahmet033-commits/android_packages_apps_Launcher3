@@ -24,6 +24,7 @@ import android.content.pm.LauncherApps;
 import android.net.Uri;
 import android.os.Process;
 import android.os.UserHandle;
+import android.provider.AlarmClock;
 import android.provider.CalendarContract;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,6 +39,7 @@ public class QuickSpaceActionReceiver {
 
     public OnClickListener mCalendarClickListener;
     public OnClickListener mWeatherClickListener;
+    public OnClickListener mClockClickListener;
 
     public QuickSpaceActionReceiver(Context context) {
         this.mContext = context;
@@ -54,6 +56,13 @@ public class QuickSpaceActionReceiver {
             @Override
             public void onClick(View view) {
                 openGoogleWeather(view);
+            }
+        };
+
+        mClockClickListener = new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openClock(view);
             }
         };
     }
@@ -82,6 +91,16 @@ public class QuickSpaceActionReceiver {
             mLauncherApps.startAppDetailsActivity(new ComponentName("com.google.android.googlequicksearchbox",
                     "com.google.android.apps.gsa.velour.DynamicActivityTrampoline"), Process.myUserHandle(), null, null);
         }
+    }
+
+    private void openClock(View view) {
+        final Intent intent = new Intent(AlarmClock.ACTION_SHOW_ALARMS)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        Launcher.getLauncher(mContext).startActivitySafely(view, intent, null);
+    }
+
+    public OnClickListener getClockAction() {
+        return mClockClickListener;
     }
 
     public OnClickListener getCalendarAction() {
