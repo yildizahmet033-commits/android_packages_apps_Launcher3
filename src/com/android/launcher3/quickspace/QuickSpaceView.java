@@ -512,6 +512,24 @@ public class QuickSpaceView extends FrameLayout implements OnDataListener {
         );
     }
 
+    /**
+     * The content is taller than the reserved cell row and is drawn outside of our bounds
+     * (clipChildren is off), so extend the touchable area to cover it as well.
+     * Overrides the hidden View#pointInView(float, float, float).
+     */
+    public boolean pointInView(float localX, float localY, float slop) {
+        if (localX >= -slop && localY >= -slop
+                && localX < getWidth() + slop && localY < getHeight() + slop) {
+            return true;
+        }
+        return mQuickspaceContent != null
+                && mQuickspaceContent.getVisibility() == VISIBLE
+                && localX >= mQuickspaceContent.getLeft()
+                && localX < mQuickspaceContent.getRight()
+                && localY >= mQuickspaceContent.getTop()
+                && localY < mQuickspaceContent.getBottom();
+    }
+
     @Override
     public void onLayout(boolean b, int n, int n2, int n3, int n4) {
         super.onLayout(b, n, n2, n3, n4);
